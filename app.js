@@ -10,6 +10,13 @@ app.use(express.json());
 
 const User = require("./model/user");
 
+const auth = require("./middleware/auth");
+
+//Welcome
+app.get("/welcome", auth, (req, res) => {
+  res.status(200).send("Welcome 🙌 ");
+});
+
 //Register
 app.post("/register", async (req, res) => {
   try {
